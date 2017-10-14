@@ -6,33 +6,35 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
+
 /**
  * Created by sunpy on 2017-10-14.
  */
 
-class TopService extends Service{
+public class TopService extends Service{
     private View m_View;
     private WindowManager.LayoutParams m_Params;
     private WindowManager m_WindowManager;
 
 
-
-
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+
         return null;
     }
+
 
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.d("test", "서비스 onCreate");
 
         //top_view.xml 레이아웃을 생성하여 뷰 출력
         LayoutInflater mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -95,6 +97,7 @@ class TopService extends Service{
 
     // 터치 동작 확인을 위해 버튼 터치 시 메인 액티비티 호출.
     public void onBtnTest(View v) {
+        Log.d("test", "클릭 탑뷰 버튼");
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
